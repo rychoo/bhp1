@@ -18,6 +18,7 @@ CREATE TABLE users (
     town VARCHAR(255),
     phone VARCHAR(32),
     urlcode VARCHAR(255),
+    userrole VARCHAR(12),
     created DATETIME,
     modified DATETIME
 );
