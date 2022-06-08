@@ -24,6 +24,7 @@
             <fieldset>
                 <legend><?= __('Edit Transaction') ?></legend>
                 <?php
+                    echo $this->Form->control('price');
                     echo $this->Form->control('status');
                     echo $this->Form->control('hash_id');
                 ?>

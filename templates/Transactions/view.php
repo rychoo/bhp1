@@ -30,6 +30,10 @@
                     <th><?= __('Hash Id') ?></th>
                     <td><?= h($transaction->hash_id) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Price') ?></th>
+                    <td><?= $transaction->price === null ? '' : $this->Number->format($transaction->price) ?></td>
+                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Status') ?></strong>

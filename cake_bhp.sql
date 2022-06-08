@@ -31,6 +31,7 @@ CREATE TABLE videos (
     filename VARCHAR(255),
     picturename VARCHAR(255),
     published BOOLEAN DEFAULT FALSE,
+    price FLOAT,
     created DATETIME,
     modified DATETIME,
     UNIQUE KEY (slug)
@@ -52,6 +53,7 @@ CREATE TABLE tests (
 CREATE TABLE transactions (
     user_id INT NOT NULL,
     video_id INT NOT NULL,
+    price FLOAT,
     status TEXT,
     hash_id VARCHAR(255),
     PRIMARY KEY (user_id, video_id)

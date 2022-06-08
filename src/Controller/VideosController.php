@@ -49,38 +49,7 @@ class VideosController extends AppController
         $video = $this->Videos->newEmptyEntity();
         if ($this->request->is('post')) {
             $video = $this->Videos->patchEntity($video, $this->request->getData());
-             $folderToSaveFiles = WWW_ROOT . 'videos' ;
-
-        if(!empty($this->request->getData('filename')))
-        {
-            $file = $this->request->getData('filename');
-            $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1);
-            $arr_ext = array('m4a');
-            if(in_array($ext, $arr_ext))
-            {
-                $newFilename = uniqid("video", true).'.'.$ext;                 
-                $file->moveTo($folderToSaveFiles .DS. $newFilename );
-                $video->set('filename', $newFilename);
-//                $this->Movie->save($this->request->data);
-//                debug($this->request->data);
-            }
-        }
-            $folderToSaveFiles = WWW_ROOT . 'img' ;
-        if(!empty($this->request->getData('picturename')))
-        {
-            $file = $this->request->getData('picturename');
-            $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1);
-            $arr_ext = array('jpg', 'jpeg', 'gif','png');
-            if(in_array($ext, $arr_ext))
-            {
-                $newFilename = uniqid("picture", true).'.'.$ext;                 
-                $file->moveTo($folderToSaveFiles .DS. $newFilename );
-                $video->set('picturename', $newFilename);
-//                $this->Movie->save($this->request->data);
-                //debug($this->request->data);
-            }
-        }
-           if ($this->Videos->save($video)) {
+            if ($this->Videos->save($video)) {
                 $this->Flash->success(__('The video has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

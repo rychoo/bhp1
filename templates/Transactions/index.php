@@ -13,6 +13,7 @@
                 <tr>
                     <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th><?= $this->Paginator->sort('video_id') ?></th>
+                    <th><?= $this->Paginator->sort('price') ?></th>
                     <th><?= $this->Paginator->sort('hash_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -22,6 +23,7 @@
                 <tr>
                     <td><?= $transaction->has('user') ? $this->Html->link($transaction->user->id, ['controller' => 'Users', 'action' => 'view', $transaction->user->id]) : '' ?></td>
                     <td><?= $transaction->has('video') ? $this->Html->link($transaction->video->title, ['controller' => 'Videos', 'action' => 'view', $transaction->video->id]) : '' ?></td>
+                    <td><?= $transaction->price === null ? '' : $this->Number->format($transaction->price) ?></td>
                     <td><?= h($transaction->hash_id) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $transaction->user_id]) ?>

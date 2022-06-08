@@ -28,6 +28,7 @@
                     echo $this->Form->control('filename');
                     echo $this->Form->control('picturename');
                     echo $this->Form->control('published');
+                    echo $this->Form->control('price');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

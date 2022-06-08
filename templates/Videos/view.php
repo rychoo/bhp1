@@ -39,6 +39,10 @@
                     <td><?= $this->Number->format($video->id) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Price') ?></th>
+                    <td><?= $video->price === null ? '' : $this->Number->format($video->price) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Created') ?></th>
                     <td><?= h($video->created) ?></td>
                 </tr>
@@ -65,6 +69,7 @@
                         <tr>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Video Id') ?></th>
+                            <th><?= __('Price') ?></th>
                             <th><?= __('Status') ?></th>
                             <th><?= __('Hash Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -73,6 +78,7 @@
                         <tr>
                             <td><?= h($transactions->user_id) ?></td>
                             <td><?= h($transactions->video_id) ?></td>
+                            <td><?= h($transactions->price) ?></td>
                             <td><?= h($transactions->status) ?></td>
                             <td><?= h($transactions->hash_id) ?></td>
                             <td class="actions">

@@ -91,6 +91,10 @@ class VideosTable extends Table
             ->boolean('published')
             ->allowEmptyString('published');
 
+        $validator
+            ->numeric('price')
+            ->allowEmptyString('price');
+
         return $validator;
     }
 

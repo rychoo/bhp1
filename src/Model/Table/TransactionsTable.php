@@ -67,6 +67,10 @@ class TransactionsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->numeric('price')
+            ->allowEmptyString('price');
+
+        $validator
             ->scalar('status')
             ->allowEmptyString('status');
 

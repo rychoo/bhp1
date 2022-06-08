@@ -17,6 +17,7 @@
                     <th><?= $this->Paginator->sort('filename') ?></th>
                     <th><?= $this->Paginator->sort('picturename') ?></th>
                     <th><?= $this->Paginator->sort('published') ?></th>
+                    <th><?= $this->Paginator->sort('price') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -31,6 +32,7 @@
                     <td><?= h($video->filename) ?></td>
                     <td><?= h($video->picturename) ?></td>
                     <td><?= h($video->published) ?></td>
+                    <td><?= $video->price === null ? '' : $this->Number->format($video->price) ?></td>
                     <td><?= h($video->created) ?></td>
                     <td><?= h($video->modified) ?></td>
                     <td class="actions">

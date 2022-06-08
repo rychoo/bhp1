@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property string|null $filename
  * @property string|null $picturename
  * @property bool|null $published
+ * @property float|null $price
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
  *
@@ -38,6 +39,7 @@ class Video extends Entity
         'filename' => true,
         'picturename' => true,
         'published' => true,
+        'price' => true,
         'created' => true,
         'modified' => true,
         'transactions' => true,

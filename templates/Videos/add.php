@@ -23,6 +23,7 @@
                     echo $this->Form->control('filename', ['type' => 'file']);
                     echo $this->Form->control('picturename', ['type' => 'file']);
                     echo $this->Form->control('published');
+                    echo $this->Form->control('price');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -19,6 +19,7 @@
             <fieldset>
                 <legend><?= __('Add Transaction') ?></legend>
                 <?php
+                    echo $this->Form->control('price');
                     echo $this->Form->control('status');
                     echo $this->Form->control('hash_id');
                 ?>

@@ -26,8 +26,9 @@ class VideosFixture extends TestFixture
                 'filename' => 'Lorem ipsum dolor sit amet',
                 'picturename' => 'Lorem ipsum dolor sit amet',
                 'published' => 1,
-                'created' => '2022-06-06 18:18:17',
-                'modified' => '2022-06-06 18:18:17',
+                'price' => 1,
+                'created' => '2022-06-08 16:37:28',
+                'modified' => '2022-06-08 16:37:28',
             ],
         ];
         parent::init();

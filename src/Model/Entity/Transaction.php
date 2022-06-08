@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $user_id
  * @property int $video_id
+ * @property float|null $price
  * @property string|null $status
  * @property string|null $hash_id
  *
@@ -29,6 +30,7 @@ class Transaction extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'price' => true,
         'status' => true,
         'hash_id' => true,
         'user' => true,
