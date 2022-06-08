@@ -13,15 +13,15 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="videos form content">
-            <?= $this->Form->create($video) ?>
+            <?= $this->Form->create($video, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Add Video') ?></legend>
                 <?php
                     echo $this->Form->control('title');
                     echo $this->Form->control('slug');
                     echo $this->Form->control('body');
-                    echo $this->Form->control('filename');
-                    echo $this->Form->control('picturename');
+                    echo $this->Form->control('filename', ['type' => 'file']);
+                    echo $this->Form->control('picturename', ['type' => 'file']);
                     echo $this->Form->control('published');
                 ?>
             </fieldset>
