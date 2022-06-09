@@ -23,10 +23,10 @@
                 <legend><?= __('Edit Video') ?></legend>
                 <?php
                     echo $this->Form->control('title');
-                    echo $this->Form->control('slug');
+//                    echo $this->Form->control('slug');
                     echo $this->Form->control('body');
-                    echo $this->Form->control('filename');
-                    echo $this->Form->control('picturename');
+//                    echo $this->Form->control('filename');
+//                    echo $this->Form->control('picturename');
                     echo $this->Form->control('published');
                     echo $this->Form->control('price');
                 ?>

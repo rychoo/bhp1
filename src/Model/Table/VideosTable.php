@@ -7,6 +7,10 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+// the Text class
+use Cake\Utility\Text;
+// the EventInterface class
+use Cake\Event\EventInterface;
 
 /**
  * Videos Model
@@ -111,4 +115,14 @@ class VideosTable extends Table
 
         return $rules;
     }
+    
+    public function beforeSave(EventInterface $event, $entity, $options)
+    {
+        if ($entity->isNew() && !$entity->slug) {
+            $sluggedTitle = Text::slug($entity->title);
+            // trim slug to maximum length defined in schema
+            $entity->slug = substr($sluggedTitle, 0, 191);
+        }
+    }
+
 }

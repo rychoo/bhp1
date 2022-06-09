@@ -49,31 +49,36 @@ class VideosController extends AppController
         $video = $this->Videos->newEmptyEntity();
         if ($this->request->is('post')) {
             $video = $this->Videos->patchEntity($video, $this->request->getData());
-            if ($this->Videos->save($video)) {
-                $this->Flash->success(__('The video has been saved.'));
+             $folderToSaveFiles = WWW_ROOT . 'videos' ;
 
-                return $this->redirect(['action' => 'index']);
+        if(!empty($this->request->getData('filename')))
+        {
+            $file = $this->request->getData('filename');
+            $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1);
+            $arr_ext = array('m4a');
+            if(in_array($ext, $arr_ext))
+            {
+                $newFilename = uniqid("video", true).'.'.$ext;                 
+                $file->moveTo($folderToSaveFiles .DS. $newFilename );
+                $video->set('filename', $newFilename);
+//                debug($this->request->data);
             }
-            $this->Flash->error(__('The video could not be saved. Please, try again.'));
         }
-        $this->set(compact('video'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Video id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $video = $this->Videos->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $video = $this->Videos->patchEntity($video, $this->request->getData());
-            if ($this->Videos->save($video)) {
+            $folderToSaveFiles = WWW_ROOT . 'img' ;
+        if(!empty($this->request->getData('picturename')))
+        {
+            $file = $this->request->getData('picturename');
+            $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1);
+            $arr_ext = array('jpg', 'jpeg', 'gif','png');
+            if(in_array($ext, $arr_ext))
+            {
+                $newFilename = uniqid("picture", true).'.'.$ext;                 
+                $file->moveTo($folderToSaveFiles .DS. $newFilename );
+                $video->set('picturename', $newFilename);
+                //debug($this->request->data);
+            }
+        }
+           if ($this->Videos->save($video)) {
                 $this->Flash->success(__('The video has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -102,4 +107,23 @@ class VideosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+     public function edit($slug)
+    {
+        $video = $this->Videos
+            ->findBySlug($slug)
+            ->firstOrFail();
+
+        if ($this->request->is(['post', 'put'])) {
+            $this->Videos->patchEntity($video, $this->request->getData());
+            if ($this->Videos->save($video)) {
+                $this->Flash->success(__('Your video has been updated.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Unable to update your video.'));
+        }
+
+        $this->set('video', $video);
+    }
+
 }
