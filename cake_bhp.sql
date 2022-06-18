@@ -26,7 +26,6 @@ CREATE TABLE users (
 CREATE TABLE videos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    slug VARCHAR(191) NOT NULL,
     body TEXT,
     filename VARCHAR(255),
     picturename VARCHAR(255),
@@ -34,7 +33,7 @@ CREATE TABLE videos (
     price FLOAT,
     created DATETIME,
     modified DATETIME,
-    UNIQUE KEY (slug)
+    UNIQUE KEY (id)
 );
 
 CREATE TABLE tests (

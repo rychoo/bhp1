@@ -13,7 +13,6 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('title') ?></th>
-                    <th><?= $this->Paginator->sort('slug') ?></th>
                     <th><?= $this->Paginator->sort('filename') ?></th>
                     <th><?= $this->Paginator->sort('picturename') ?></th>
                     <th><?= $this->Paginator->sort('published') ?></th>
@@ -28,7 +27,6 @@
                 <tr>
                     <td><?= $this->Number->format($video->id) ?></td>
                     <td><?= h($video->title) ?></td>
-                    <td><?= h($video->slug) ?></td>
                     <td><?= h($video->filename) ?></td>
                     <td><?= h($video->picturename) ?></td>
                     <td><?= h($video->published) ?></td>

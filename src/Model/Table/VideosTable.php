@@ -7,10 +7,6 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-// the Text class
-use Cake\Utility\Text;
-// the EventInterface class
-use Cake\Event\EventInterface;
 
 /**
  * Videos Model
@@ -71,13 +67,6 @@ class VideosTable extends Table
             ->notEmptyString('title');
 
         $validator
-            ->scalar('slug')
-            ->maxLength('slug', 191)
-            ->requirePresence('slug', 'create')
-            ->notEmptyString('slug')
-            ->add('slug', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
             ->scalar('body')
             ->allowEmptyString('body');
 
@@ -111,18 +100,8 @@ class VideosTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['slug']), ['errorField' => 'slug']);
+        $rules->add($rules->isUnique(['id']), ['errorField' => 'id']);
 
         return $rules;
     }
-    
-    public function beforeSave(EventInterface $event, $entity, $options)
-    {
-        if ($entity->isNew() && !$entity->slug) {
-            $sluggedTitle = Text::slug($entity->title);
-            // trim slug to maximum length defined in schema
-            $entity->slug = substr($sluggedTitle, 0, 191);
-        }
-    }
-
 }

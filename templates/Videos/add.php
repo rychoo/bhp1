@@ -18,7 +18,6 @@
                 <legend><?= __('Add Video') ?></legend>
                 <?php
                     echo $this->Form->control('title');
-//                    echo $this->Form->control('slug');
                     echo $this->Form->control('body');
                     echo $this->Form->control('filename', ['type' => 'file']);
                     echo $this->Form->control('picturename', ['type' => 'file']);

@@ -23,10 +23,6 @@
                     <td><?= h($video->title) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Slug') ?></th>
-                    <td><?= h($video->slug) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Filename') ?></th>
                     <td><?= h($video->filename) ?></td>
                 </tr>

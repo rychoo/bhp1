@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $title
- * @property string $slug
  * @property string|null $body
  * @property string|null $filename
  * @property string|null $picturename
@@ -34,7 +33,6 @@ class Video extends Entity
      */
     protected $_accessible = [
         'title' => true,
-        'slug' => true,
         'body' => true,
         'filename' => true,
         'picturename' => true,
