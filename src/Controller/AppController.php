@@ -55,6 +55,8 @@ public function initialize(): void
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+    $this->loadComponent('Authorization.Authorization');
+
     }
 
  public function beforeFilter(\Cake\Event\EventInterface $event)
