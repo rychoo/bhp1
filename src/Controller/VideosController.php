@@ -18,6 +18,7 @@ class VideosController extends AppController
      */
     public function index()
     {
+        $this->Authorization->skipAuthorization();
         $videos = $this->paginate($this->Videos);
 
         $this->set(compact('videos'));
@@ -32,6 +33,7 @@ class VideosController extends AppController
      */
     public function view($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $video = $this->Videos->get($id, [
             'contain' => ['Transactions'],
         ]);
@@ -46,6 +48,7 @@ class VideosController extends AppController
      */
     public function add()
     {
+        $this->Authorization->authorize($video);
         $video = $this->Videos->newEmptyEntity();
         if ($this->request->is('post')) {
             $video = $this->Videos->patchEntity($video, $this->request->getData());
@@ -97,6 +100,7 @@ class VideosController extends AppController
      */
     public function edit($id = null)
     {
+        $this->Authorization->authorize($video);
         $video = $this->Videos->get($id, [
             'contain' => [],
         ]);
@@ -121,6 +125,7 @@ class VideosController extends AppController
      */
     public function delete($id = null)
     {
+        $this->Authorization->authorize($video);
         $this->request->allowMethod(['post', 'delete']);
         $video = $this->Videos->get($id);
         if ($this->Videos->delete($video)) {
